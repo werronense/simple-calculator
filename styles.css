@@ -46,3 +46,17 @@ a img {
   border: none;
 }
 /* END RESET*/
+* {
+  box-sizing: border-box;
+}
+
+.page {
+  width: 100%;
+}
+
+.calculator {
+  background-color: gray;
+  height: 70vh;
+  margin: 15vh auto;
+  width: 30vw;
+}
