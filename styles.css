@@ -68,7 +68,7 @@ a img {
   height: 70vh;
   margin: 15vh auto;
   padding: 1.25em 0 1.25em 0;
-  width: 30vw;
+  width: 60vh;
 }
 
 .row {
@@ -118,4 +118,23 @@ button:hover {
 
 .go {
   background: #5cb85c;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 800px) {
+  .calculator {
+    box-shadow: none;
+    height: 80vh;
+    margin-top: 5vh;
+    padding: 0.75em 0;
+    width: 95vw;
+  }
+
+  .row {
+    padding: 0.25em 1em;
+  }
+
+  button {
+    font-size: 0.75em;
+  }
 }
