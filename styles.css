@@ -73,3 +73,23 @@ a img {
   background-color: lightgray;
   flex: 1;
 }
+
+button {
+  flex: 1;
+}
+
+.danger {
+  background-color: red;
+}
+
+.warn {
+  background-color: orange;
+}
+
+.neutral {
+  background-color: lightblue;
+}
+
+.go {
+  background: lightgreen;
+}
