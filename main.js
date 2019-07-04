@@ -1,10 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   const display = document.querySelector(".display");
   const numberBtns = document.querySelectorAll(".number");
+  const operatorBtns = document.querySelectorAll(".operator");
+
   numberBtns.forEach(btn => {
     btn.addEventListener("click", e => {
-      console.log(e.target.id);
       display.textContent += e.target.id;
+    });
+  });
+
+  operatorBtns.forEach(btn => {
+    btn.addEventListener("click", e => {
+      display.textContent += e.target.textContent;
     });
   });
 
