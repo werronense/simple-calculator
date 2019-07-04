@@ -110,19 +110,21 @@ button:hover {
 }
 
 .danger {
-  background-color: #d9534f;
+  background-color: #ed251a;
 }
 
 .warn {
-  background-color: #f0ad4e;
+  background-color: #f7cf07;
+  color: #292b2c;
 }
 
 .neutral {
-  background-color: #5bc0de;
+  background-color: #7f4cb2;
 }
 
 .go {
-  background: #5cb85c;
+  background: #53fb1c;
+  color: #292b2c;
 }
 
 /* MOBILE STYLES */
