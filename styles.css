@@ -56,7 +56,13 @@ a img {
 
 .calculator {
   background-color: gray;
+  display: flex;
+  flex-direction: column;
   height: 70vh;
   margin: 15vh auto;
   width: 30vw;
+}
+
+.row {
+  flex: 1;
 }
