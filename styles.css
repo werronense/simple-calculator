@@ -57,39 +57,52 @@ a img {
 
 .calculator {
   background-color: gray;
+  border-radius: 1em;
+  box-shadow: inset 0.10em 0.10em 0.4em white;
   display: flex;
   flex-direction: column;
   height: 70vh;
   margin: 15vh auto;
+  padding: 1.25em 0 1.25em 0;
   width: 30vw;
 }
 
 .row {
   display: flex;
   flex: 1;
+  padding: 0.75em 2em 0.75em 2em;
 }
 
 .display {
   background-color: lightgray;
+  border-radius: 1em;
+  box-shadow: inset 0.10em 0.10em 0.4em white;
   flex: 1;
 }
 
 button {
+  border: 1px solid gray;
+  border-radius: 1em;
+  box-shadow: inset 0.10em 0.10em 0.4em white;
   flex: 1;
 }
 
+.row button ~ button {
+  margin-left: 1.5em;
+}
+
 .danger {
-  background-color: red;
+  background-color: #d9534f;
 }
 
 .warn {
-  background-color: orange;
+  background-color: #f0ad4e;
 }
 
 .neutral {
-  background-color: lightblue;
+  background-color: #5bc0de;
 }
 
 .go {
-  background: lightgreen;
+  background: #5cb85c;
 }
