@@ -46,6 +46,7 @@ a img {
   border: none;
 }
 /* END RESET*/
+
 * {
   box-sizing: border-box;
 }
@@ -64,5 +65,11 @@ a img {
 }
 
 .row {
+  display: flex;
+  flex: 1;
+}
+
+.display {
+  background-color: lightgray;
   flex: 1;
 }
