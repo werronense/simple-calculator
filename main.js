@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const operatorBtns = document.querySelectorAll(".operator");
   const equalsBtn = document.querySelector("#equals");
   const decimalBtn = document.querySelector("#decimal");
+  const acBtn = document.querySelector("#ac");
+  const ceBtn = document.querySelector("#ce");
 
   let inputNumber = "";
   let inputSeries = [];
@@ -27,6 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   decimalBtn.addEventListener("click", () => {
     enterDecimal();
+  });
+
+  acBtn.addEventListener("click", () => {
+    handleAC();
+  });
+
+  ceBtn.addEventListener("click", () => {
+    handleCE();
   });
 
   // user interaction functions
@@ -73,6 +83,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const newSeries = series.slice(3);
       newSeries.unshift(operate(series[0], series[2], series[1]));
       assessSeries(newSeries);
+    }
+  }
+
+  function handleAC() {
+    inputNumber = "";
+    inputSeries = [];
+    updateDisplay("0");
+  }
+
+  function handleCE() {
+    if (inputSeries.length === 0) {
+      inputNumber = "";
+      updateDisplay("0");
+    } else {
+      inputNumber = inputSeries[0];
+      inputSeries = [];
+      updateDisplay(inputNumber);
     }
   }
 
