@@ -48,11 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleInput(number, operation) {
-    if (operation === "reset") {
-      inputSeries = [0, ["add", Number(number)]];
-    } else {
-      inputSeries.push([operation, Number(number)]);
-    }
+    inputSeries.push([operation, Number(number)]);
     inputNumber = "";
   }
 
@@ -71,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
     handleInput(inputNumber, inputOperation);
     inputSeries = [assessSeries(inputSeries)];
     updateDisplay(inputSeries[0]);
-    inputOperation = "reset";
   }
 
   function enterDecimal() {
@@ -126,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function divide(x, y) {
-    return x / y;
+    return (y === 0 ? "ERROR" : x / y);
   }
 
   function operate(x, y, operator) {
