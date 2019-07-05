@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleInput(number, operation) {
-    if (number !== "") {
+    if (inputNumber !== "") {
       inputSeries.push([operation, Number(number)]);
       inputNumber = "";
     }
@@ -61,20 +61,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function enterOperator(e) {
     updateDisplay(e.target.textContent);
-    handleInput(inputNumber, inputOperation);
-    inputOperation = e.target.id;
+    if (!inputOperation && inputNumber) {
+      console.log("= num operator");
+      inputOperation = e.target.id;
+      inputSeries = [0, ["add", Number(inputNumber)]];
+      inputNumber = "";
+    } else {
+      handleInput(inputNumber, inputOperation);
+      inputOperation = e.target.id;
+    }
   }
 
   function enterEquals() {
     handleInput(inputNumber, inputOperation);
     inputSeries = [assessSeries(inputSeries)];
     updateDisplay(inputSeries[0]);
+    inputOperation = "";
   }
 
   function enterDecimal() {
     if (inputNumber.indexOf(".") < 0) {
       inputNumber += ".";
-      updateDisplay(".");
+      updateDisplay(inputNumber);
     }
   }
 
