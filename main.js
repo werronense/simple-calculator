@@ -48,8 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleInput(number, operation) {
-    inputSeries.push([operation, Number(number)]);
-    inputNumber = "";
+    if (number !== "") {
+      inputSeries.push([operation, Number(number)]);
+      inputNumber = "";
+    }
   }
 
   function enterNumber(e) {
@@ -77,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function assessSeries(series) {
-    console.log(series);
     if (series.length > 1) {
       return series.reduce((a, b) => {
         return operate(a, b[1], b[0]);
