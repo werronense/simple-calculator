@@ -106,13 +106,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleCE() {
-    if (inputSeries.length === 0) {
+    if (inputSeries.length === 1) {
+      resetInputs();
+      updateDisplay("0");
+    } else if (inputNumber) {
       inputNumber = "";
       updateDisplay("0");
     } else {
-      inputNumber = inputSeries[0];
-      inputSeries = [];
+      inputNumber = inputSeries.pop()[1];
       updateDisplay(inputNumber);
+      inputOperation = "";
+      console.log(inputSeries);
     }
   }
 
@@ -134,6 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function operate(x, y, operator) {
+    console.log(x, y, operator);
     let result = 0;
 
     switch (operator) {
