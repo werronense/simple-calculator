@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // user interaction functions
   function updateDisplay(input) {
-    display.textContent += input;
+    display.textContent = input;
   }
 
   function handleInputNumber(number) {
@@ -51,10 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function enterEquals() {
-    handleInputNumber(inputNumber);
-    inputNumber = assessSeries(inputSeries);
-    display.textContent = inputNumber;
-    inputSeries = [];
+    if (inputSeries.length >= 2) {
+      handleInputNumber(inputNumber);
+      inputNumber = assessSeries(inputSeries);
+      updateDisplay(inputNumber);
+      inputSeries = [];
+    }
   }
 
   function enterDecimal() {
