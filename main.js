@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // select DOM elements
   const display = document.querySelector(".display");
   const numberBtns = document.querySelectorAll(".number");
   const operatorBtns = document.querySelectorAll(".operator");
@@ -7,11 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const acBtn = document.querySelector("#ac");
   const ceBtn = document.querySelector("#ce");
 
+  // initialize input variables
   let inputNumber = "";
   let inputOperation = "add";
   let inputSeries = [0];
 
-  // event listeners
+  // set event listeners
   numberBtns.forEach(btn => {
     btn.addEventListener("click", e => {
       enterNumber(e);
@@ -40,13 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
     handleCE();
   });
 
-  // user interaction functions
+  // event handler and helper functions
   function updateDisplay(input) {
     display.textContent = input;
   }
 
   function handleInput(number, operation) {
-    inputSeries.push([operation, Number(number)]);
+    if (operation === "reset") {
+      inputSeries = [0, ["add", Number(number)]];
+    } else {
+      inputSeries.push([operation, Number(number)]);
+    }
     inputNumber = "";
   }
 
@@ -65,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     handleInput(inputNumber, inputOperation);
     inputSeries = [assessSeries(inputSeries)];
     updateDisplay(inputSeries[0]);
-    console.log(inputSeries, inputNumber, inputOperation);
+    inputOperation = "reset";
   }
 
   function enterDecimal() {
@@ -76,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function assessSeries(series) {
+    console.log(series);
     if (series.length > 1) {
       return series.reduce((a, b) => {
         return operate(a, b[1], b[0]);
@@ -144,5 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return result;
   }
 
+  // initial display value
   updateDisplay(inputSeries[0])
 });
