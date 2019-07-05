@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function enterNumber(e) {
-    updateDisplay(e.target.id);
     inputNumber += e.target.id;
+    updateDisplay(inputNumber);
   }
 
   function enterOperator(e) {
