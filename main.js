@@ -73,10 +73,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function enterEquals() {
-    handleInput(inputNumber, inputOperation);
-    inputSeries = [assessSeries(inputSeries)];
-    updateDisplay(inputSeries[0]);
-    inputOperation = "";
+    if (inputOperation) {
+      handleInput(inputNumber, inputOperation);
+      inputSeries = [assessSeries(inputSeries)];
+      updateDisplay(inputSeries[0]);
+      inputOperation = "";
+    }
   }
 
   function enterDecimal() {
