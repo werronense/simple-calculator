@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const ceBtn = document.querySelector("#ce");
 
   let inputNumber = "";
-  let inputSeries = [];
+  let inputOperation = "add";
+  let inputSeries = [0];
 
   // event listeners
   numberBtns.forEach(btn => {
@@ -44,8 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
     display.textContent = input;
   }
 
-  function handleInputNumber(number) {
-    inputSeries.push(Number(number));
+  function handleInput(number, operation) {
+    inputSeries.push([operation, Number(number)]);
     inputNumber = "";
   }
 
@@ -56,18 +57,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function enterOperator(e) {
     updateDisplay(e.target.textContent);
-    handleInputNumber(inputNumber);
-    inputSeries.push(e.target.id);
+    handleInput(inputNumber, inputOperation);
+    inputOperation = e.target.id;
   }
 
   function enterEquals() {
-    if (inputSeries.length >= 2) {
-      handleInputNumber(inputNumber);
-      inputNumber = assessSeries(inputSeries);
-      console.log(inputNumber);
-      updateDisplay(inputNumber);
-      inputSeries = [];
-    }
+    handleInput(inputNumber, inputOperation);
+    inputSeries = [assessSeries(inputSeries)];
+    updateDisplay(inputSeries[0]);
+    console.log(inputSeries, inputNumber, inputOperation);
   }
 
   function enterDecimal() {
@@ -77,32 +75,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /*
   function assessSeries(series) {
-    if (series.length === 3) {
-      console.log(series);
-      return operate(series[0], series[2], series[1]);
-    } else {
-      const newSeries = series.slice(3);
-      newSeries.unshift(operate(series[0], series[2], series[1]));
-      console.log(newSeries);
-      assessSeries(newSeries);
-    }
-  }
-  */
-  function assessSeries(series) {
-    if (series.length > 2) {
-      
+    if (series.length > 1) {
+      return series.reduce((a, b) => {
+        return operate(a, b[1], b[0]);
+      });
     }
   }
 
-  function clearInputs() {
+  function resetInputs() {
     inputNumber = "";
-    inputSeries = [];
+    inputOperation = "add";
+    inputSeries = [0];
   }
 
   function handleAC() {
-    clearInputs();
+    resetInputs();
     updateDisplay("0");
   }
 
@@ -155,4 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return result;
   }
+
+  updateDisplay(inputSeries[0])
 });
