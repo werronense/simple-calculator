@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (inputSeries.length >= 2) {
       handleInputNumber(inputNumber);
       inputNumber = assessSeries(inputSeries);
+      console.log(inputNumber);
       updateDisplay(inputNumber);
       inputSeries = [];
     }
@@ -76,19 +77,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  /*
   function assessSeries(series) {
     if (series.length === 3) {
+      console.log(series);
       return operate(series[0], series[2], series[1]);
     } else {
       const newSeries = series.slice(3);
       newSeries.unshift(operate(series[0], series[2], series[1]));
+      console.log(newSeries);
       assessSeries(newSeries);
     }
   }
+  */
+  function assessSeries(series) {
+    if (series.length > 2) {
+      
+    }
+  }
 
-  function handleAC() {
+  function clearInputs() {
     inputNumber = "";
     inputSeries = [];
+  }
+
+  function handleAC() {
+    clearInputs();
     updateDisplay("0");
   }
 
