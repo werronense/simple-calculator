@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const numberBtns = document.querySelectorAll(".number");
   const operatorBtns = document.querySelectorAll(".operator");
   const equalsBtn = document.querySelector("#equals");
+  const decimalBtn = document.querySelector("#decimal");
 
   let inputNumber = "";
   let inputSeries = [];
@@ -21,10 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   equalsBtn.addEventListener("click", () => {
-    handleInputNumber(inputNumber);
-    inputNumber = assessSeries(inputSeries);
-    display.textContent = inputNumber;
-    inputSeries = [];
+    enterEquals();
+  });
+
+  decimalBtn.addEventListener("click", () => {
+    enterDecimal();
   });
 
   // user interaction functions
@@ -46,6 +48,20 @@ document.addEventListener("DOMContentLoaded", () => {
     updateDisplay(e.target.textContent);
     handleInputNumber(inputNumber);
     inputSeries.push(e.target.id);
+  }
+
+  function enterEquals() {
+    handleInputNumber(inputNumber);
+    inputNumber = assessSeries(inputSeries);
+    display.textContent = inputNumber;
+    inputSeries = [];
+  }
+
+  function enterDecimal() {
+    if (inputNumber.indexOf(".") < 0) {
+      inputNumber += ".";
+      updateDisplay(".");
+    }
   }
 
   function assessSeries(series) {
